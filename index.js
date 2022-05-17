@@ -26,9 +26,13 @@ app.get("/", (req, res) => {
     })
 })
 
+const {emotions} = require('./data')
+
+
 app.get("/task1", (req, res) => {
+    app.locals.emotions = emotions
     res.render("task1", {
-        author: "MSSV - Ho ten"
+        author: "19120336 - Đinh Trọng Quân"
     })
 })
 
