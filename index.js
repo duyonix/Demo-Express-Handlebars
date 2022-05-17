@@ -8,29 +8,33 @@ const hbs = expressHbs.create({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views/partials'),
+    partialsDir: path.join(__dirname, 'views/partials')
 });
 
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+app.engine("hbs", hbs.engine)
+app.set("view engine", "hbs")
+app.set("views", path.join(__dirname, "views"))
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        author: 'Nhom06',
-    });
-});
+app.get("/", (req, res) => {
+    res.render("index", {
+        author: "Nhom06"
+    })
+})
 
-app.get('/task1', (req, res) => {
-    res.render('task1', {
-        author: 'MSSV - Ho ten',
-    });
-});
+const {emotions} = require('./data')
+
+
+app.get("/task1", (req, res) => {
+    app.locals.emotions = emotions
+    res.render("task1", {
+        author: "19120336 - Đinh Trọng Quân"
+    })
+})
 
 app.get('/task2', (req, res) => {
     let salary = parseFloat(req.query.salary || 0);
@@ -47,25 +51,25 @@ app.get('/task2', (req, res) => {
     });
 });
 
-app.get('/task3', (req, res) => {
-    res.render('task3', {
-        author: 'MSSV - Ho ten',
-    });
-});
+app.get("/task3", (req, res) => {
+    res.render("task3", {
+        author: "MSSV - Ho ten"
+    })
+})
 
-app.get('/task4', (req, res) => {
-    res.render('task4', {
-        author: 'MSSV - Ho ten',
-    });
-});
+app.get("/task4", (req, res) => {
+    res.render("task4", {
+        author: "MSSV - Ho ten"
+    })
+})
 
-app.get('/task4/:name', (req, res) => {
-    res.render('task4-details', {
-        author: 'MSSV - Ho ten',
-    });
-});
+app.get("/task4/:name", (req, res) => {
+    res.render("task4-details", {
+        author: "MSSV - Ho ten"
+    })
+})
 
-app.set('port', process.env.PORT || 3000);
-app.listen(app.get('port'), () => {
-    console.log('Server is running on port ' + app.get('port'));
+app.set("port", process.env.PORT || 3000)
+app.listen(app.get("port"), () => {
+    console.log("Server is running on port " + app.get("port"))
 });

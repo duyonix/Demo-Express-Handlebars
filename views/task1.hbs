@@ -6,57 +6,28 @@
 </div>
 <div class="container">
   <div class="row destacados">
-    <div class="col-md-3">
-      <a href="">
+    {{#each emotions}}
+    <div class="col-md-3" >
+      <a href="#" onclick="showQuote('{{quotePath}}')">
         <img
-          src="images/task1/happy.jpeg"
-          alt="happy"
+          src="images{{imagePath}}"
+          alt="{{title}}"
           class="img-circle img-thumbnail"
         />
         <h2>
-          happy
+          {{title}}
         </h2>
       </a>
     </div>
-    <div class="col-md-3">
-      <a href="">
-        <img
-          src="images/task1/sad.jpeg"
-          alt="sad"
-          class="img-circle img-thumbnail"
-        />
-        <h2>
-          sad
-        </h2>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a href="">
-        <img
-          src="images/task1/stress.jpeg"
-          alt="stress"
-          class="img-circle img-thumbnail"
-        />
-        <h2>
-          stress
-        </h2>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a href="">
-        <img
-          src="images/task1/angry.jpeg"
-          alt="angry"
-          class="img-circle img-thumbnail"
-        />
-        <h2>
-          angry
-        </h2>
-      </a>
-    </div>
+    {{/each}}
   </div>
   <div class="row text-center">
-    <img class="img-thumbnail" src="images/task1/default.jpg" />
+    <img id="quote" class="img-thumbnail" src="images/task1/default.jpg" />
   </div>
 </div>
+<script>
+  function showQuote(quotePath){
+    document.getElementById('quote').setAttribute('src',`images${quotePath}`)
+  }
+</script>
 <!--/contain-->
