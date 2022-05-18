@@ -1,5 +1,5 @@
 {
-  "name": "demoexpresshandlebars",
+  "name": "demo-express-handlebars",
   "version": "1.0.0",
   "description": "Demo Express Handlebars",
   "main": "index.js",

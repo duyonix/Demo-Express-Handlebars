@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const expressHbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const { emotions, categories, products, zodiacs } = require('./data')
 
 const app = express();
 const hbs = expressHbs.create({
@@ -25,9 +26,6 @@ app.get("/", (req, res) => {
         author: "Nhom06"
     })
 })
-
-const {emotions} = require('./data')
-
 
 app.get("/task1", (req, res) => {
     app.locals.emotions = emotions
@@ -59,13 +57,18 @@ app.get("/task3", (req, res) => {
 
 app.get("/task4", (req, res) => {
     res.render("task4", {
-        author: "MSSV - Ho ten"
+        zodiacs,
+        author: "19120491 - Đặng Thái Duy"
     })
 })
 
 app.get("/task4/:name", (req, res) => {
+    const name = req.params.name;
+    const zodiac = zodiacs.find(zodiac => zodiac.name === name) || {};
+
     res.render("task4-details", {
-        author: "MSSV - Ho ten"
+        zodiac,
+        author: "19120491 - Đặng Thái Duy"
     })
 })
 
