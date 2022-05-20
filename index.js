@@ -50,8 +50,14 @@ app.get('/task2', (req, res) => {
 });
 
 app.get("/task3", (req, res) => {
+    let category = parseFloat(req.query.cat || 0);
+    res.locals.categories = categories;
+    if(category) res.locals.products = products.filter(product => product.category === category);
+    else{
+        res.locals.products = products;
+    }
     res.render("task3", {
-        author: "MSSV - Ho ten"
+        author: "19120727 - Võ Hoàng Vũ"
     })
 })
 
